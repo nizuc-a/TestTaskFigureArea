@@ -1,0 +1,12 @@
+--Если промежуточной таблицы нет и в Category есть поле IdProduct
+select concat(p.Name, ' - ', c.Name) as Product_Category
+from Product p
+left join Category c on p.IdProduct = c.IdProduct
+order by p.Name, c.Name
+
+--Если есть промежуточная таблица
+select concat(p.Name, ' - ', c.Name) as Product_Category
+from Product p
+left join Product2Category p2c ON p.ProductID = p2c.ProductID
+left join Category c ON p2c.CategoryID = c.CategoryID
+order by p.Name, c.Name
